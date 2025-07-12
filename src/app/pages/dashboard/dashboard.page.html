@@ -1,0 +1,61 @@
+<ion-content class="dashboard-content">
+  <!-- ENCABEZADO: nombre y código -->
+  <div class="user-info">
+    <div>
+      <h2>{{ nombre }}</h2>
+      <span>Cod. Modelo: {{ codigo }}</span>
+    </div>
+    <img class="mpg-logo" src="assets/logo-mpg.png" alt="Logo MPG" />
+  </div>
+
+  <!-- BANNER PROMOCIONAL -->
+  <div class="promo-banner">
+    <img src="assets/banner.png" alt="Promoción del mes" />
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active">Resumen</button>
+    <button class="tab">Autoejecución</button>
+    <button class="tab">Radiografía</button>
+  </div>
+
+  <!-- METAS POR VOLUMEN -->
+  <div class="metas-box">
+    <h2>Metas por volumen</h2>
+    <p style="font-size: 0.85rem;">
+      Estas son las principales metas por volumen que debes cumplir al mes.
+    </p>
+
+    <!-- Barra de progreso general (suma promedio de KPIs mostrados) -->
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="promedioKPI">
+        {{ promedioKPI }}%
+      </div>
+    </div>
+
+    <!-- Selector de filtro -->
+    <div class="filtro">
+      <label>Filtrar por:</label>
+      <ion-select [(ngModel)]="filtro" (ionChange)="filtrarKPIs()">
+        <ion-select-option value="cartones">Cartones</ion-select-option>
+        <ion-select-option value="hectolitros">Hectolitros</ion-select-option>
+      </ion-select>
+    </div>
+
+    <!-- KPIs visuales -->
+    <div class="kpi-container">
+      <div class="kpi-card" *ngFor="let kpi of kpisFiltrados">
+        <div class="circle">{{ kpi.porcentaje }}%</div>
+        <span>{{ kpi.nombre | titlecase }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SI NO HAY KPIs -->
+  <ng-template #sinDatos>
+    <ion-text color="medium" class="ion-text-center ion-margin-top">
+      <p>No hay KPIs disponibles.</p>
+    </ion-text>
+  </ng-template>
+</ion-content>

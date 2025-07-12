@@ -1,7 +1,8 @@
 {
-  "name": "superlikers-app",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
+  "/api": {
+    "target": "http://localhost/superlikers-api",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
 }

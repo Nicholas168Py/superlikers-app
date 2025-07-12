@@ -1,0 +1,57 @@
+<ion-content class="login-content ion-padding">
+  <img src="assets/imagen-inferior.png" class="bg-bottom-image" alt="" />
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Modelo Para Ganar" class="logo" />
+  </div>
+
+  <h2>¡Bienvenido/a Modelo Para Ganar!</h2>
+  <p>Ingresa tus datos:</p>
+
+  <form (submit)="onSubmit()">
+    <ion-list lines="none">
+      <ion-item class="input-box">
+        <ion-label position="stacked">Número de usuario *</ion-label>
+        <ion-input [(ngModel)]="codigo" name="codigo" placeholder="Número de usuario *" required></ion-input>
+      </ion-item>
+
+      <ion-item class="input-box password-input">
+        <ion-label position="stacked">Contraseña *</ion-label>
+        <div class="input-with-icon">
+          <ion-input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" name="password"
+            placeholder="Contraseña *" required>
+          </ion-input>
+          <ion-icon slot="end" [name]="showPassword ? 'eye-outline' : 'eye-off-outline'" class="toggle-icon"
+            (click)="togglePassword()">
+          </ion-icon>
+        </div>
+      </ion-item>
+    </ion-list>
+    <a href="#" class="olvido-contrasena">¿Olvidaste tu contraseña?</a>
+
+    <div class="checkboxes">
+      <ion-item lines="none">
+        <ion-checkbox [(ngModel)]="terminos" name="terminos" slot="start"></ion-checkbox>
+        <ion-label>
+          He leído y acepto <a href="#">Términos y Condiciones</a>
+        </ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-checkbox [(ngModel)]="privacidad" name="privacidad" slot="start"></ion-checkbox>
+        <ion-label>
+          He leído y acepto el <a href="#">Aviso de privacidad</a>
+        </ion-label>
+      </ion-item>
+    </div>
+
+    <div class="botones ion-margin-top">
+      <ion-button class="btn-iniciar-sesion" expand="block" type="submit">Iniciar sesión</ion-button>
+      <ion-button expand="block" class="btn-supervisor" type="button">Entrar como supervisor</ion-button>
+    </div>
+  </form>
+
+  <div class="ayuda ion-text-center ion-margin-top">
+    <a href="#">¿Necesitas ayuda con tu registro?</a>
+    <img class="whatsapp-logo" src="assets/whatsapp-logo.jpg" alt="">
+  </div>
+</ion-content>

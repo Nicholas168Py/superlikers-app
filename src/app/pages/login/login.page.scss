@@ -1,0 +1,179 @@
+.login-content {
+    --background: #0A2440;
+    color: white;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+
+    h2 {
+        font-size: 1.3rem;
+        margin-top: 12px;
+    }
+
+    // Estilos del logo
+
+    .logo-container {
+        margin-top: 50px;
+        margin-bottom: 10px;
+
+        .logo {
+            width: 250px;
+        }
+    }
+
+    // Estilos del formulario login
+
+    ion-item.input-box {
+        --background-color: #0e1a38;
+        border-radius: 10px;
+        margin: 10px 0;
+        padding-left: 10px;
+
+        ion-label {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        ion-input {
+            color: white;
+            border: 1px solid #ffffff33;
+            border-radius: 5px;
+        }
+    }
+
+    .input-box ::ng-deep input.native-input {
+        padding-left: 10px !important;
+    }
+
+    .input-box ion-label {
+        color: #ffffff !important; // blanco puro
+        font-weight: 500; // opcional: más marcado
+    }
+
+    .checkboxes {
+        margin-top: 12px;
+
+        ion-label a {
+            color: #00aaff;
+            text-decoration: underline;
+        }
+    }
+
+    .botones {
+        margin-top: 20px;
+
+        ion-button {
+            --border-radius: 20px;
+            --background: linear-gradient(#7894D2, #3A5DAE);
+            font-weight: bold;
+            color: #0A2440;
+        }
+
+        .btn-iniciar-sesion {
+            margin-bottom: 20px;
+        }
+
+        ion-button[fill="clear"] {
+            color: white;
+        }
+
+        .btn-supervisor {
+            --background: linear-gradient(#124882, #0A2644);
+            border: 1px solid #385CAD;
+            font-weight: bold;
+            color: white;
+            border-radius: var(--border-radius);
+        }
+    }
+
+    .ayuda {
+        margin-top: 20px;
+        font-size: 0.9rem;
+    }
+
+    a {
+        color: #4F9593;
+        text-decoration: none;
+    }
+
+    .olvido-contrasena {
+        text-align: right;
+        display: block;
+        font-size: 0.9rem;
+        margin: 0px 15px;
+    }
+
+    ion-list,
+    item-inner {
+        background: transparent;
+    }
+
+    .list-ios,
+    .item-inner {
+        background: transparent;
+    }
+
+    ion-item {
+        --background: transparent !important;
+        background: transparent !important; // para fallback
+        --ion-item-background: transparent !important;
+    }
+
+    ion-checkbox {
+        --size: 20px;
+        --checkbox-background-checked: #7894D2;
+    }
+
+    ion-checkbox::part(container) {
+        border-radius: 6px;
+    }
+
+    ion-checkbox::part(mark) {
+        stroke-width: 3px;
+    }
+
+    .password-input {
+        .input-with-icon {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            color: white;
+            border: 1px solid #ffffff33;
+            position: relative;
+            border-radius: 5px;
+
+            ion-input {
+                flex: 1;
+                border: none;
+                padding-right: 10px;
+            }
+
+            .toggle-icon {
+                font-size: 20px;
+                color: #ccc;
+                cursor: pointer;
+                padding: 8px;
+            }
+        }
+    }
+
+    // estilos degrade inferior
+
+    .bg-bottom-image {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+        pointer-events: none; // Evita que interfiera con clics
+    }
+
+    .whatsapp-logo {
+        width: 15px;
+        vertical-align: middle;
+        margin-left: 5px;
+    }
+
+}
