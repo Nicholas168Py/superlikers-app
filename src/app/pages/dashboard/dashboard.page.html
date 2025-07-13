@@ -1,53 +1,92 @@
-<ion-content class="dashboard-content">
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item button>Perfil</ion-item>
+      <ion-item button>Estadísticas</ion-item>
+      <!-- <ion-item button (click)="logout()">Cerrar sesión</ion-item> -->
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-content id="main-content" class="dashboard-content">
   <!-- ENCABEZADO: nombre y código -->
   <div class="user-info">
-    <div>
-      <h2>{{ nombre }}</h2>
-      <span>Cod. Modelo: {{ codigo }}</span>
+    <ion-buttons slot="start" class="burguer-menu">
+      <ion-menu-button autoHide="false"><img src="assets/burguer-menu.png" alt=""></ion-menu-button>
+    </ion-buttons>
+    <div class="user-details">
+      <h4>{{ nombre }}</h4>
+      <span>Cod. Modelo: <strong>{{ codigo }}</strong></span>
     </div>
     <img class="mpg-logo" src="assets/logo-mpg.png" alt="Logo MPG" />
   </div>
 
   <!-- BANNER PROMOCIONAL -->
-  <div class="promo-banner">
-    <img src="assets/banner.png" alt="Promoción del mes" />
-  </div>
+  <div class="contenido">
+    <div class="promo-banner">
+      <img src="assets/banner.png" alt="Promoción del mes" />
+    </div>
 
-  <!-- TABS -->
-  <div class="tabs">
-    <button class="tab active">Resumen</button>
-    <button class="tab">Autoejecución</button>
-    <button class="tab">Radiografía</button>
-  </div>
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab active">Resumen</button>
+      <button class="tab">Autoejecución</button>
+      <button class="tab">Radiografía</button>
+    </div>
 
-  <!-- METAS POR VOLUMEN -->
-  <div class="metas-box">
-    <h2>Metas por volumen</h2>
-    <p style="font-size: 0.85rem;">
-      Estas son las principales metas por volumen que debes cumplir al mes.
-    </p>
+    <!-- METAS POR VOLUMEN -->
+    <div class="metas-box">
+      <h2>Metas por volumen</h2>
+      <p style="font-size: 0.9rem; font-weight: 700;">
+        Estas son las principales metas por volumen que debes cumplir al mes.
+      </p>
+      <p style="font-size: 0.85rem; color:#6784C2;">A medida que avanzas en cada una, vas sumando al porcentaje de
+        cumplimiento total
+        para obtener tu bonificación.
+      </p>
 
-    <!-- Barra de progreso general (suma promedio de KPIs mostrados) -->
-    <div class="progress-bar">
-      <div class="progress" [style.width.%]="promedioKPI">
-        {{ promedioKPI }}%
+      <!-- Barra de progreso general (suma promedio de KPIs mostrados) -->
+      <div class="progress-container">
+        <div class="progress-track">
+          <div class="progress-fill" [style.width.%]="promedioKPI"></div>
+        </div>
+        <div class="progress-label floating">
+          <div class="circulo-progreso">{{ promedioKPI }}%</div>
+        </div>
+        <div class="progress-label right" [style.width.%]>
+          <div class="circulo-progreso">100%</div>
+        </div>
       </div>
-    </div>
 
-    <!-- Selector de filtro -->
-    <div class="filtro">
-      <label>Filtrar por:</label>
-      <ion-select [(ngModel)]="filtro" (ionChange)="filtrarKPIs()">
-        <ion-select-option value="cartones">Cartones</ion-select-option>
-        <ion-select-option value="hectolitros">Hectolitros</ion-select-option>
-      </ion-select>
-    </div>
+      <!-- Selector de filtro -->
+      <div class="filtro">
+        <label class="filtro-label">Filtrar por:</label>
+        <ion-select [(ngModel)]="filtro" (ionChange)="filtrarKPIs()" interface="popover">
+          <ion-select-option value="cartones">Cartones</ion-select-option>
+          <ion-select-option value="hectolitros">Hectolitros</ion-select-option>
+        </ion-select>
+      </div>
 
-    <!-- KPIs visuales -->
-    <div class="kpi-container">
-      <div class="kpi-card" *ngFor="let kpi of kpisFiltrados">
-        <div class="circle">{{ kpi.porcentaje }}%</div>
-        <span>{{ kpi.nombre | titlecase }}</span>
+      <!-- KPIs visuales -->
+      <div class="kpi-container">
+        <div class="kpi-card" *ngFor="let kpi of kpisFiltrados">
+          <div class="circle-wrapper" [ngClass]="getColorClass(kpi.nombre)">
+            <svg class="circle-chart" viewBox="0 0 36 36">
+              <path class="circle-bg" d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="circle-progress" [attr.stroke-dasharray]="kpi.porcentaje + ', 100'" d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <text x="18" y="20.35" class="percentage">{{ kpi.porcentaje }}%</text>
+            </svg>
+            <span>{{ getNombreFormateado(kpi.nombre) }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -65,9 +66,9 @@ export class DashboardPage {
         const valor = parseFloat(data[key]);
         if (isNaN(valor)) continue;
 
-        const match = key.match(/^(.*?)_(meta_mes|avance_actual)_(cartones|hectolitros)$/);
+        const match = key.match(/^(.*?)_(meta_mes|avance_actual)_(cartones|hectolitros)$/i);
         if (match) {
-          const nombre = match[1]; // ej: "premium"
+          const nombre = match[1]; // nombre del avance
           const tipoDato = match[2]; // meta_mes o avance_actual
           const tipo = match[3]; // cartones o hectolitros
 
@@ -115,5 +116,21 @@ export class DashboardPage {
     this.promedioKPI = this.kpisFiltrados.length
       ? Math.round(total / this.kpisFiltrados.length)
       : 0;
+  }
+
+  getColorClass(nombre: string): string {
+    nombre = nombre.toLowerCase();
+    if (nombre.includes('volumen')) return 'volumen';
+    if (nombre.includes('marketplace')) return 'marketplace';
+    if (nombre.includes('premium')) return 'premium';
+    if (nombre.includes('innovaciones')) return 'innovaciones';
+    if (nombre.includes('retornable')) return 'retornable';
+    return 'default';
+  }
+
+  getNombreFormateado(nombre: string): string {
+    return nombre
+      .replace(/_/g, ' ')
+      .replace(/\b\w/g, l => l.toUpperCase());
   }
 }
