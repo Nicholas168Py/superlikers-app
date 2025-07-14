@@ -91,4 +91,4 @@ Este proyecto se distribuye bajo licencia [MIT](LICENSE).
 
 ---
 
-**Autor:** Tu nombre aquí
+**Autor:** Nicholas Rocha Acosta
