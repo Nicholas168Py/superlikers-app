@@ -1,5 +1,8 @@
 {
-  "name": "superlikers-app",
-  "integrations": {},
-  "type": "angular"
+  "/api": {
+    "target": "http://localhost/superlikers-api",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
 }

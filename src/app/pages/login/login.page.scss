@@ -12,10 +12,14 @@
         margin-top: 12px;
     }
 
+    p {
+        color: #8d8d8d;
+    }
+
     // Estilos del logo
 
     .logo-container {
-        margin-top: 50px;
+        margin-top: 5%;
         margin-bottom: 10px;
 
         .logo {
@@ -38,8 +42,9 @@
 
         ion-input {
             color: white;
-            border: 1px solid #ffffff33;
+            border: 1px solid #2d5297;
             border-radius: 5px;
+            --placeholder-color: #2d5297;
         }
     }
 
@@ -48,7 +53,7 @@
     }
 
     .input-box ion-label {
-        color: #ffffff !important; // blanco puro
+        color: #8d8d8d !important; // blanco puro
         font-weight: 500; // opcional: más marcado
     }
 
@@ -139,8 +144,8 @@
             display: flex;
             align-items: center;
             width: 100%;
-            color: white;
-            border: 1px solid #ffffff33;
+            color: #264681;
+            border: 1px solid #2d5297;
             position: relative;
             border-radius: 5px;
 
@@ -152,7 +157,7 @@
 
             .toggle-icon {
                 font-size: 20px;
-                color: #ccc;
+                color: #2d5297;
                 cursor: pointer;
                 padding: 8px;
             }
@@ -162,12 +167,14 @@
     // estilos degrade inferior
 
     .bg-bottom-image {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
+        max-width: 100%;
+        height: auto;
         z-index: -1;
-        pointer-events: none; // Evita que interfiera con clics
+        pointer-events: none;
     }
 
     .whatsapp-logo {
