@@ -1,109 +1,94 @@
 # Superlikers App
 
-Aplicación móvil desarrollada con **Ionic + Angular** para la gestión y visualización de KPIs de participantes en campañas.
+**Superlikers App** es una aplicación híbrida desarrollada con **Angular** e **Ionic**, diseñada para ejecutarse tanto en la web como en dispositivos móviles usando **Capacitor**.
 
-## Características principales
-- Autenticación de participantes (login).
-- Visualización de metas por volumen (KPIs).
-- Barra de progreso y gráficos de avance.
-- Menú lateral con navegación.
-- Solicitud de permisos de notificaciones push (con Capacitor).
-- Diseño adaptado a dispositivos móviles.
+## 📦 Versión
 
----
+`v0.0.1`
 
-## Requisitos previos
+## 🚀 Características principales
 
-| Herramienta        | Requerido para | Instalación |
-|--------------------|-----------------|-------------|
-| **Node.js** (v18+) | Angular, Ionic | https://nodejs.org/ |
-| **Ionic CLI**     | Servidor Dev, Build | `npm install -g @ionic/cli` |
-| **Capacitor**     | Funcionalidades nativas | Instalado con Ionic |
-| **Android Studio** | Pruebas en dispositivo/emulador | https://developer.android.com/studio |
-| **Java JDK 17+**  | Android Studio | https://jdk.java.net/ |
+- Framework principal: Angular
+- UI adaptable con Ionic
+- Capacitor para funciones nativas (Android/iOS)
+- Configuración de ESLint, proxy y entorno de desarrollo
 
----
+## 📁 Estructura importante
 
-## Instalación del proyecto
+- `angular.json` – configuración del proyecto Angular
+- `ionic.config.json` – configuración de Ionic
+- `capacitor.config.ts` – ajustes para despliegue móvil
+- `proxy.conf.json` – configuración de redirección de peticiones
+- `package.json` – scripts y dependencias
+
+## 🛠️ Instalación y configuración
 
 ```bash
-# Clonar el repositorio
-git clone <url-del-repo>
-
-# Ingresar al proyecto
+# Clona el repositorio
+git clone https://github.com/tu-usuario/superlikers-app.git
 cd superlikers-app
 
-# Instalar dependencias
+# Instala las dependencias del proyecto
 npm install
 ```
 
----
+## ▶️ Ejecución en modo desarrollo
 
-## Configuración especial
-
-### Proxy para consumir API local (solo en desarrollo)
-- El proyecto usa un proxy para evitar CORS  
-- Configurado en: `proxy.conf.json`
-- Verifica o ajusta la URL del backend si es necesario
-
----
-
-## Servidor de desarrollo (Web)
+Para visualizar la aplicación en el navegador con proxy configurado:
 
 ```bash
-ionic serve
+npx ng serve --proxy-config proxy.conf.json
 ```
 
-> ⚠️ Las notificaciones push no funcionan en navegador.  
-> Se recomienda solo para pruebas de UI y conexión API.
+La aplicación estará disponible en:
 
----
-
-## Compilación y pruebas en Android
-
-### Sincronizar Capacitor
-```bash
-npx cap sync android
+```
+http://localhost:4200/
 ```
 
-### Abrir en Android Studio
+### Simular vista móvil en el navegador
+
+1. Abre tu navegador y ve a `http://localhost:4200/`
+2. Presiona `F12` para abrir las herramientas de desarrollador
+3. Haz clic en el ícono de dispositivo móvil (o usa `Ctrl + Shift + M`)
+4. Selecciona un modelo de teléfono para simular la vista móvil
+
+> Esto permite ver cómo se adapta el diseño responsive de la app.
+
+## 📱 Despliegue en dispositivos móviles
+
 ```bash
+# Sincroniza la app con Capacitor
+npx cap sync
+
+# Abre el proyecto en Android Studio o Xcode
 npx cap open android
+# o
+npx cap open ios
 ```
 
-### Desde Android Studio
-- Esperar a que Gradle configure el proyecto
-- Conectar un dispositivo o usar un AVD (emulador) con **Google APIs x86_64**
-- Ejecutar el proyecto
+## 🧪 Scripts disponibles
+
+```bash
+npm run start      # Inicia la app (usa proxy si configuras ng serve manualmente)
+npm run build      # Compila el proyecto
+npm run watch      # Observa cambios
+npm run test       # Ejecuta pruebas
+```
+
+## 📚 Tecnologías usadas
+
+- `@angular/core`
+- `@angular/forms`
+- `@ionic/angular`
+- `@capacitor/core`
+
+Consulta `package.json` para el listado completo.
+
+## 📄 Licencia
+
+Este proyecto se distribuye bajo licencia [MIT](LICENSE).
 
 ---
 
-## Notificaciones Push
-
-- El plugin `@capacitor/push-notifications` requiere **dispositivo real o emulador con servicios de Google**
-- En Web **no está soportado**
-
----
-
-## Consideraciones por sistema operativo
-
-| Sistema | Consideración |
-|---------|---------------|
-| **Windows** | Habilitar Virtualización Intel (VT-x) para emuladores |
-| **MacOS**  | Si es chip Apple Silicon, usar imágenes ARM64 |
-| **Linux**  | Verificar instalación de KVM y permisos para emulación |
-
----
-
-## Errores comunes
-
-- ❗ **HAXM no instalado / VM issue**: Revisa si la virtualización está activa en BIOS
-- ❗ **Capacitor plugin not available on web**: Ocurre si pruebas notificaciones en navegador
-- ❗ **Budget exceeded (Angular)**: Puedes aumentar los budgets en `angular.json` si es necesario
-
----
-
-## Autor y contacto
-
-Desarrollado por: **Nicholas Rocha**  
-Correo: **nicolasrochaacosta@gmail.com**
+**Autor:** Tu nombre aquí
