@@ -7,6 +7,10 @@ import { firstValueFrom } from 'rxjs';
 import { addIcons } from 'ionicons';
 import { AuthService } from '../services/auth.service';
 import { eyeOutline, eyeOffOutline } from 'ionicons/icons';
+import { PushNotifications } from '@capacitor/push-notifications';
+import { Platform } from '@ionic/angular';
+import { Capacitor } from '@capacitor/core';
+
 
 addIcons({
   'eye-outline': eyeOutline,
@@ -21,8 +25,8 @@ addIcons({
   styleUrls: ['./login.page.scss']
 })
 export class LoginPage {
-  codigo = '12222222';
-  password = '123456789';
+  codigo = '';
+  password = '';
   terminos = false;
   privacidad = false;
   showPassword = false;
@@ -30,8 +34,24 @@ export class LoginPage {
   constructor(
     private toastCtrl: ToastController,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private platform: Platform
   ) { }
+
+  async solicitarPermisosPush() {
+    if (!this.platform.is('capacitor') || Capacitor.getPlatform() === 'web') {
+      console.log('PushNotifications no disponible en web');
+      return;
+    }
+
+    const permStatus = await PushNotifications.requestPermissions();
+    if (permStatus.receive === 'granted') {
+      this.showToast('Permiso de notificaciones concedido');
+      PushNotifications.register();
+    } else {
+      this.showToast('Permiso de notificaciones denegado');
+    }
+  }
 
   togglePassword() {
     this.showPassword = !this.showPassword;
@@ -72,6 +92,8 @@ export class LoginPage {
         localStorage.setItem('email', response.participant.email);
         console.log('Token y distinct_id guardados:', response.token, response.participant.uid);
         this.router.navigateByUrl('/dashboard');
+
+        this.solicitarPermisosPush();
       } else {
         this.showToast('Error de login: datos incompletos');
       }

@@ -7,6 +7,8 @@ import { provideHttpClient } from '@angular/common/http';   //Importacion de Htt
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -15,3 +17,5 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes, withPreloading(PreloadAllModules)),
   ],
 });
+
+defineCustomElements(window);

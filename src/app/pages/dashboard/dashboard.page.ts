@@ -4,6 +4,8 @@ import { IonicModule } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { addIcons } from 'ionicons';
+import { cashOutline, storefrontOutline, imageOutline } from 'ionicons/icons';
 
 
 @Component({
@@ -24,6 +26,12 @@ export class DashboardPage {
   constructor(private http: HttpClient) { }
 
   async ngOnInit() {
+    addIcons({
+      'cash-outline': cashOutline,
+      'storefront-outline': storefrontOutline,
+      'image-outline': imageOutline,
+    });
+
     this.nombre = localStorage.getItem('name') || '';
     this.codigo = localStorage.getItem('distinct_id') || '';
     try {

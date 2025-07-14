@@ -1,7 +1,7 @@
 .dashboard-content {
 
     // ESTILOS GENERALES
-    --background: #0a2440;
+    --background: #102B61;
     color: white;
     padding: 16px;
     font-family: 'Noto Sans', sans-serif;
@@ -14,7 +14,7 @@
         align-items: center;
         background: linear-gradient(#385CAD 90%, #6B89CB);
         border-radius: 0px 0px 30px 30px;
-        padding: 10px 30px;
+        padding: 2% 5%;
 
         h4 {
             margin-top: 0px;
@@ -27,7 +27,7 @@
         }
 
         .mpg-logo {
-            width: 100px;
+            width: 25%;
         }
 
         .user-details {
@@ -47,7 +47,7 @@
         // ESTILOS MENU HAMBURGUESA
 
         ion-menu-button::part(icon) {
-            display: none; // ✅ oculta el ícono nativo de Ionic
+            display: none;
         }
 
         .burguer-menu {
@@ -59,7 +59,13 @@
         .burguer-menu ion-menu-button img {
             width: 55px;
         }
+
+        .button-native {
+            --padding: 0px;
+        }
     }
+
+    // ESTILOS DEL BANNER
 
     .promo-banner {
         margin-top: 16px;
@@ -74,17 +80,22 @@
         padding: 0px 20px;
     }
 
+    // ESTILOS DE LA BARRA DE RESUMEN, AUTIEJECUCION Y RADIOGRAFIA
+
     .tabs {
         display: flex;
         justify-content: space-around;
         margin: 16px 0;
+        background: #0A2440;
+        padding: 5px;
+        border-radius: 20px;
 
         .tab {
             background: transparent;
-            color: #ccc;
+            color: #506B9D;
             border: none;
             font-weight: bold;
-            padding: 8px 12px;
+            padding: 6px 12px;
             border-radius: 20px;
 
             &.active {
@@ -94,10 +105,12 @@
         }
     }
 
+    // ESTILOS DE LA BARRA DE PROGRESO
+
     .metas-box {
         background: #244388;
-        border-radius: 12px;
-        padding: 16px;
+        border-radius: 20px;
+        padding: 14px;
         font-family: 'Noto Sans', sans-serif;
 
         h2 {
@@ -163,6 +176,8 @@
             margin-left: -2px;
         }
 
+        // ESTILOS DEL FILTRO
+
         .filtro {
             display: flex;
             align-items: center;
@@ -206,8 +221,8 @@
             justify-content: space-between;
             margin-top: 16px;
             gap: 0px;
-            padding: 20px 0px;
-            border-radius: 30px;
+            padding: 0px;
+            border-radius: 15px;
 
             .kpi-card {
                 width: calc(25% - 12px);
@@ -250,26 +265,65 @@
         }
     }
 
-    ion-footer {
+    .custom-footer {
         ion-toolbar {
-            background: #051830;
-            color: white;
+            background: transparent;
+            --background: transparent;
+            border: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
 
-            ion-button {
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            background: #e9ecf8;
+            border-radius: 22px;
+            padding: 6px;
+            gap: 6px;
+            margin-top: 0px;
+
+            button.tab {
+                flex: 1 1 0;
+                display: flex;
                 flex-direction: column;
-                font-size: 0.75rem;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                border: none;
+                border-radius: 20px;
+                padding: 4px 0;
+                font-weight: bold;
+                color: #6F7D93;
+                transition: 0.3s;
+                font-size: 0.7rem;
 
                 ion-icon {
-                    font-size: 20px;
-                    margin-bottom: 4px;
+                    font-size: 24px;
+                    margin-bottom: 0px;
+                    color: #6F7D93;
                 }
 
-                &.active-tab {
-                    color: #f7c942;
+                .icon-rotated {
+                    transform: rotate(-5deg);
+                }
+
+                &.active {
+                    background: linear-gradient(to bottom, #ffb700, #f99700);
+                    color: #27343A;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+                    ion-icon {
+                        color: #27343A;
+                    }
                 }
             }
         }
+
     }
+
 
     .circle-wrapper {
         width: 90px;
