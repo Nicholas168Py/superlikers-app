@@ -32,6 +32,10 @@ cd superlikers-app
 npm install
 ```
 
+Adicional se recomienda instalar xampp y la carpeta htdocs ingresarla en la ruta de C:\xampp\htdocs\ y en xampp encender el servidor Apache para que el proxy funcione correctamente
+
+Tambien se recomienda en el navegador colocar la visualizacion para moviles para ver correctamente la app
+
 ## ▶️ Ejecución en modo desarrollo
 
 Para visualizar la aplicación en el navegador con proxy configurado:
